@@ -7,7 +7,6 @@ class canteen extends CI_Controller
 		Parent::__construct();
 
 		$this->load->model('model_sistem');
-		$this->load->model('model_crud');
 		$this->load->library('form_validation');
 	}
 
@@ -138,7 +137,6 @@ class canteen extends CI_Controller
 		$this->load->view('templete_data/header');
 		$this->load->view('templete_data/footer');
 	}
-
 
 
 

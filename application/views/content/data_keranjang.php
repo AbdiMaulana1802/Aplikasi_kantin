@@ -167,31 +167,17 @@
 
                             </thead>
                             <tbody>
-                                <?php
-								if ($data_user > 0) {
-									foreach ($user as $darang) {
-								?>
-                                <tr>
 
 
-
-
-
-
-
-                                </tr>
-                                <?php }
-								} else {
-									?>
-                                <tr>
-                                    <td colspan="8">
-                                        <center> NO Data Entry</center>
-                                    </td>
+                                <td colspan="8">
+                                    <center> NO Data Entry</center>
+                                </td>
                                 </tr>
                                 <?php
-								}
+
 
 								?>
+
 
 
 
@@ -310,15 +296,16 @@ div>
 
 
 
+
+
+
+
+
+
+
+
+
+
 </div>
-
-
-
-
-
-
-</div>
-</div>
-
 </div>
 </div>

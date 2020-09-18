@@ -53,7 +53,7 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('canteen/keranjang') ?>">
                 <i class="fas fa-table"></i>
-                <span>Keranjang</span></a>
+                <span>Transaksi</span></a>
         </li>
 
 
@@ -178,7 +178,7 @@
                                         width="100" height="100">
                                 </td>
                                 <td>
-                                    <!-- Button trigger modal -->
+                                    <!-- //Button trigger modal -->
                                     <button type="submit" class="btn btn-success" data-toggle="modal"
                                         data-target="#exampleModal">
                                         beli
@@ -246,10 +246,15 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <label>Keterangan</label>
-                            <input type="text" name="keterangan" class="form-control">
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Keterangan</span>
+                            </div>
+
+                            <input type="text" name="keterangan" class="form-control" placeholder=" keterangan"
+                                aria-label="Username" aria-describedby="basic-addon1">
                         </div>
+
 
                         <div class="form-group">
                             <label>Status Order</label>
@@ -378,6 +383,13 @@
     </ form>
 </div>
 form>
+
+
+
+
+
+
+
 
 
 

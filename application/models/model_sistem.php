@@ -93,18 +93,18 @@ class Model_sistem extends CI_Model
 
 		$data = array(
 
-			'id_order'     => '',
+			'id'     => '',
 			'no_meja'        => $no_meja,
-			'tanggal_order'  => $tanggal_order,
+			'tanggal'  => $tanggal_order,
 			'keterangan'     => $keterangan,
-			'status_order'    => $status_order,
+			'status'    => $status_order,
 
 
 
 
 		);
 
-		$this->db->insert('order_user', $data);
+		$this->db->insert('order_keranjang', $data);
 		header("location:" . base_url() . 'canteen/keranjang');
 	}
 

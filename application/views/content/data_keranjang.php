@@ -1,4 +1,3 @@
-<!-- Page Wrapper -->
 <div id="wrapper">
 
     <!-- Sidebar -->
@@ -7,33 +6,51 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-icon rotate-n-10">
-                <i class="fas fa-user-shield"></i>
+                <i class="fas fa-user-secret"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Admin</div>
+            <div class="sidebar-brand-text mx-3">USER</div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-
-        <!-- Nav Item - Dashboard -->
         <div class="sidebar-heading">
             petugas
         </div>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('canteen/admin') ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>admin</span></a>
+                <span>Admin</span></a>
         </li>
 
 
-        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            User
+        </div>
+
+
+        <!-- Nav Item - User -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/data_user') ?>">
+                <i class="fas fa-user"></i>
+                <span>User</span></a>
+        </li>
+
+
+
+
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/dataTampil') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/keranjang') ?>">
                 <i class="fas fa-table"></i>
-                <span>Data</span></a>
+                <span>Keranjang</span></a>
         </li>
 
 
@@ -97,13 +114,14 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
 
-
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo site_url('canteen') ?>" data-toggle="modal"
                                 data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
+
+
                         </div>
                     </li>
 
@@ -111,12 +129,10 @@
 
 
             </nav>
-            <!-- End of Topbar -->
-
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
 
-                    <h3 class="m-0 font-weight-bold text-primary">Data barang admin</h3>
+                    <h3 class="m-0 font-weight-bold text-primary">Data Keranjang User</h3>
 
                 </div>
 
@@ -140,10 +156,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">NO</th>
-                                    <th scope="col">Nama Makanan</th>
-                                    <th scope="col">Harga</th>
-                                    <th scope="col">Status makanan</th>
-                                    <th scope="col">gambar</th>
+                                    <th scope="col">No Meja</th>
+                                    <th scope="col">Tanggal Order</th>
+                                    <th scope="col">Keterangan</th>
+                                    <th scope="col">Status Order</th>
                                     <th colspan="2">Action</th>
                                     <!-- <th scope="col">Status</th> -->
                                 </tr>
@@ -151,33 +167,16 @@
 
                             </thead>
                             <tbody>
-
                                 <?php
-								if ($data_admin > 0) {
-									foreach ($admin as $dapor) {
+								if ($data_user > 0) {
+									foreach ($user as $darang) {
 								?>
                                 <tr>
-                                    <td> <?php echo $dapor->id_makanan; ?></td>
-                                    <td> <?php echo $dapor->nama_makanan; ?></td>
-                                    <td> <?php echo $dapor->harga_makanan; ?></td>
-                                    <td> <?php echo $dapor->status_makanan; ?></td>
-                                    <td> <img src="<?php echo base_url(); ?>assets/foto/<?php echo $dapor->foto ?>"
-                                            width="100" height="100">
-                                    </td>
 
 
-                                    <td
-                                        onclick="javascript: return confirm('apakah anda yakin mau menghapus data ini?')">
-                                        <?php echo anchor(
-													'canteen/hapus/' . $dapor->id_makanan,
-													'<button type="button" class="btn btn-danger">Delete</button>'
-												); ?>
-                                    </td>
-                                    <td><?php echo anchor(
-													'canteen/edit_admin/' .  $dapor->id_makanan,
-													'<button type="button" class="btn btn-primary">Update</button>'
-												) ?>
-                                    </td>
+
+
+
 
 
                                 </tr>
@@ -193,6 +192,9 @@
 								}
 
 								?>
+
+
+
 
 
 
@@ -266,12 +268,57 @@
 
 
 
-      
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
             </div>
+
+
+
+
+
+
+
+
+
         </div>
     </ div>
 </div>
+
+
+
+
+
+
 div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+</div>
+
+</div>
 </div>

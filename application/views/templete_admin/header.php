@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Laporan data</title>
+    <title>data admin</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url('asset/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -21,11 +22,6 @@
     <link href="<?php echo base_url('asset/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
 
 
-
-
 </head>
-
-
-
 
 <body id="page-top">

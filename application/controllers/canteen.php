@@ -7,6 +7,7 @@ class canteen extends CI_Controller
 		Parent::__construct();
 
 		$this->load->model('model_sistem');
+		$this->load->model('model_crud');
 		$this->load->library('form_validation');
 	}
 
@@ -38,16 +39,16 @@ class canteen extends CI_Controller
 	public function admin()
 	{
 		$this->load->view('content/admin');
-		$this->load->view('templete_user/header');
-		$this->load->view('templete_user/footer');
+		$this->load->view('templete_admin/header');
+		$this->load->view('templete_admin/footer');
 	}
 
 	// data input
 	public function data()
 	{
 		$this->load->view('content/data_input');
-		$this->load->view('templete_data/header');
-		$this->load->view('templete_data/footer');
+		$this->load->view('templete_user/header');
+		$this->load->view('templete_user/footer');
 	}
 
 	//untuk cek login
@@ -128,12 +129,30 @@ class canteen extends CI_Controller
 		$this->load->view('templete_data/footer');
 	}
 
+	public function keranjang()
+	{
+
+		$data['user'] = $this->model_sistem->get_user();
+		$data['data_user'] = $this->model_sistem->count_user();
+		$this->load->view('content/data_keranjang', $data);
+		$this->load->view('templete_data/header');
+		$this->load->view('templete_data/footer');
+	}
+
+
+
 
 
 	//simpan data laporan
 	public function simpan_datalaporan()
 	{
 		$this->model_sistem->tampil_data();
+	}
+
+	// data keranjang user
+	public function simpan_data()
+	{
+		$this->model_sistem->tambah();
 	}
 
 	//untuk menghapus data
@@ -144,6 +163,58 @@ class canteen extends CI_Controller
 		redirect('canteen/dataTampil');
 	}
 
+	// untuk mengedit data admin
+
+	public function edit_admin($id)
+	{
+		$where = array('id_makanan' => $id);
+		$data['canteen'] = $this->model_sistem->edit_dataAdmin($where, 'makanan')->result();
+
+		$data['admin'] = $this->model_sistem->get_data();
+		$data['data_admin'] = $this->model_sistem->count_data();
+		$this->load->view('content/edit_dataAdmin', $data);
+		$this->load->view('templete_data/header');
+		$this->load->view('templete_data/footer');
+	}
+
+	public function update_dataAdmin()
+	{
+		$this->model_sistem->update_admin();
+	}
+
+
+
+
+
+
+	public function pdf()
+	{
+
+		ob_start();
+		$data['admin']      = $this->model_sistem->get_data();
+		$data['data_admin'] = $this->model_sistem->count_data();
+		$this->load->view('content/laporan_pdf', $data);
+
+		$html = ob_get_contents();
+		ob_end_clean();
+
+		require './assets/html2pdf/autoload.php';
+
+		$pdf = new \Spipu\Html2Pdf\Html2Pdf('p', 'A4', 'en');
+		$pdf->WriteHTML($html);
+
+		$pdf->Output('Data_BarangAdmin' . date('d-m-y') . '.pdf', 'D');
+	}
+
+	public function excel()
+	{
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment; filename="Laporan Data Admin.xls"');
+		header('Cache-Control: max-age=0');
+		$data['admin']      = $this->model_sistem->get_data();
+		$data['data_admin'] = $this->model_sistem->count_data();
+		$this->load->view('content/laporan_pdf', $data);
+	}
 
 
 

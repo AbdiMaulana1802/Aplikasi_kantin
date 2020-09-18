@@ -1,4 +1,6 @@
 <!-- Page Wrapper -->
+
+
 <div id="wrapper">
 
     <!-- Sidebar -->
@@ -37,7 +39,7 @@
 
         <!-- Nav Item - User -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/user') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/data_user') ?>">
                 <i class="fas fa-user"></i>
                 <span>User</span></a>
         </li>
@@ -49,9 +51,9 @@
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('awal/datalaporan') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/keranjang') ?>">
                 <i class="fas fa-table"></i>
-                <span>Transaksi</span></a>
+                <span>Keranjang</span></a>
         </li>
 
 
@@ -121,6 +123,8 @@
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
+
+
                         </div>
                     </li>
 
@@ -128,6 +132,19 @@
 
 
             </nav>
+
+
+            <!-- // pdf -->
+            <div class="card-header py-1">
+
+                <a class="btn btn-warning" href="<?php echo base_url('canteen/pdf') ?>">
+                    <i class="fa fa-file"></i>Export Pdf </a>
+
+                <!-- excel -->
+
+                <a class="btn btn-success" href="<?php echo base_url('canteen/excel') ?>">
+                    <i class="fa fa-file"></i>Export excel </a>
+            </div>
 
             <div class="card-body">
 
@@ -160,53 +177,110 @@
                                 <td> <img src="<?php echo base_url(); ?>assets/foto/<?php echo $dapor->foto ?>"
                                         width="100" height="100">
                                 </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="submit" class="btn btn-success" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        beli
+                                    </button>
+
+
+                </div>
+                </td>
 
 
 
 
-                            </tr>
-                            <?php }
+                </tr>
+                <?php }
 							} else {
-								?>
-                            <tr>
-                                <td colspan="8">
-                                    <center> NO Data Entry</center>
-                                </td>
-                            </tr>
-                            <?php
+			?>
+                <tr>
+                    <td colspan="8">
+                        <center> NO Data Entry</center>
+                    </td>
+                </tr>
+                <?php
 							}
 
-							?>
+		?>
 
 
-                        </tbody>
+                </tbody>
 
 
-                    </table>
-                </div>
+                </table>
             </div>
-
-            </form>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
+        </form>
+        <!--  -->
     </div>
 
 
-</div>
-<?php echo form_close() ?>
 
-<!-- </form> -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Order User Makanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form action="<?php echo site_url('canteen/simpan_data'); ?>" method="post">
+
+                        <div class="form-group">
+                            <label>No Meja</label>
+                            <input type="hidden" name="id_order" class="form-control">
+                            <input type="text" name="no_meja" class="form-control">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Tanggal Order</label>
+                            <input type="date" name="tanggal" class="form-control">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Keterangan</label>
+                            <input type="text" name="keterangan" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Status Order</label>
+                            <input type="text" name="status_order" class="form-control">
+                        </div>
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">bayar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</form>
 </div>
 
 
@@ -230,7 +304,7 @@
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    < class="modal-dialog" role="document">
 
         <div class="modal-content">
             <div class="modal-header">
@@ -247,10 +321,90 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+
+
+
+
+
+
+
                 <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
             </div>
-        </div>
-    </div>
 
-    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </ div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ form>
+</div>
+form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 </div>

@@ -16,14 +16,22 @@
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Dashboard -->
+
+
+
+        <!-- Heading -->
         <div class="sidebar-heading">
-            petugas
+            User
         </div>
+
+
+        <!-- Nav Item - User -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/admin') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>admin</span></a>
+            <a class="nav-link" href="<?php echo site_url('canteen/data_user') ?>">
+                <i class="fas fa-user"></i>
+                <span>User</span></a>
         </li>
+
 
 
         <!-- Divider -->
@@ -111,116 +119,75 @@
 
 
             </nav>
-            <!-- End of Topbar -->
 
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
 
-                    <h3 class="m-0 font-weight-bold text-primary">Data barang admin</h3>
+            <div class="container-fluid">
+                <h1 class="h2 mb-4 text-gray-800 ">Edit Data Penjualan Admin</h1>
 
+                <?php foreach ($admin as $dapor) {
+				?>
+
+                <?php echo form_open_multipart('canteen/update_dataAdmin'); ?>
+                <div class="container">
+                    <!-- header -->
+                    <header class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <form action="">
+
+
+                                    <div class="form-group">
+                                        <label>Nama Makanan</label>
+                                        <input type="hidden" name="id" class="form-control"
+                                            value="<?php echo $dapor->id_makanan; ?>">
+                                        <input type="text" name="nama" class="form-control">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>Harga Makanan</label>
+                                        <input type="text" name="harga" class="form-control">
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label class="text-left">Gambar</label>
+                                        <input type="file" name="FOTO" class="form-control" placeholder=""
+                                            aria-label="foto" value="<?php echo $dapor->foto ?>">
+                                    </div>
+
+
+                                    <div class="input-group mb-4">
+                                        <label>Status Makanan</label>
+                                        <input type="text" name="status" class="form-control">
+                                    </div>
+
+
+
+                            </div>
+
+                            <div class="input-group mb-4 ">
+                                <button type="submit" class="btn btn-success">Edit Data</button>
+
+                            </div>
+
+
+
+
+                        </div>
+                        <?php echo form_close() ?>
+                        <?php } ?>
+
+
+                        <!-- </form> -->
                 </div>
 
-                <!-- // pdf -->
-                <div class="card-header py-1">
-                    <a class="btn btn-warning" href="<?php echo base_url('canteen/pdf') ?>">
-                        <i class="fa fa-file"></i>Export Pdf </a>
-
-                    <!-- excel -->
-
-                    <a class="btn btn-success" href="<?php echo base_url('canteen/excel') ?>">
-                        <i class="fa fa-file"></i>Export excel </a>
-                </div>
-
-
-
-                <div class="card-body">
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th scope="col">NO</th>
-                                    <th scope="col">Nama Makanan</th>
-                                    <th scope="col">Harga</th>
-                                    <th scope="col">Status makanan</th>
-                                    <th scope="col">gambar</th>
-                                    <th colspan="2">Action</th>
-                                    <!-- <th scope="col">Status</th> -->
-                                </tr>
-
-
-                            </thead>
-                            <tbody>
-
-                                <?php
-								if ($data_admin > 0) {
-									foreach ($admin as $dapor) {
-								?>
-                                <tr>
-                                    <td> <?php echo $dapor->id_makanan; ?></td>
-                                    <td> <?php echo $dapor->nama_makanan; ?></td>
-                                    <td> <?php echo $dapor->harga_makanan; ?></td>
-                                    <td> <?php echo $dapor->status_makanan; ?></td>
-                                    <td> <img src="<?php echo base_url(); ?>assets/foto/<?php echo $dapor->foto ?>"
-                                            width="100" height="100">
-                                    </td>
-
-
-                                    <td
-                                        onclick="javascript: return confirm('apakah anda yakin mau menghapus data ini?')">
-                                        <?php echo anchor(
-													'canteen/hapus/' . $dapor->id_makanan,
-													'<button type="button" class="btn btn-danger">Delete</button>'
-												); ?>
-                                    </td>
-                                    <td><?php echo anchor(
-													'canteen/edit_admin/' .  $dapor->id_makanan,
-													'<button type="button" class="btn btn-primary">Update</button>'
-												) ?>
-                                    </td>
-
-
-                                </tr>
-                                <?php }
-								} else {
-									?>
-                                <tr>
-                                    <td colspan="8">
-                                        <center> NO Data Entry</center>
-                                    </td>
-                                </tr>
-                                <?php
-								}
-
-								?>
-
-
-
-
-
-
-
-
-                            </tbody>
-
-
-                        </table>
-                    </div>
-                </div>
-
-
-
-
-                </form>
 
 
             </div>
 
+
+
         </div>
-
-
-
-
 
         <!-- End of Footer -->
 
@@ -228,8 +195,8 @@
     <!-- End of Content Wrapper -->
 
 </div>
-<!-- End of Page Wrapper -->
 
+<!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
@@ -250,28 +217,54 @@
 
 
 
+
+
                     <span aria-hidden="true">×</span>
                 </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your
                 current session.
-
-
             </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="modal-footer">
-
-
-
-
-
-      
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
             </div>
         </div>
     </ div>
-</div>
-div>
 </div>

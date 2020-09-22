@@ -1,4 +1,3 @@
-<!-- Page Wrapper -->
 <div id="wrapper">
 
     <!-- Sidebar -->
@@ -7,15 +6,25 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-icon rotate-n-10">
-                <i class="fas fa-user-shield"></i>
+                <i class="fas fa-user-secret"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Admin</div>
+            <div class="sidebar-brand-text mx-3">USER</div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
+        <div class="sidebar-heading">
+            petugas
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/admin') ?>">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Admin</span></a>
+        </li>
 
-        <!-- Nav Item - Dashboard -->
+
+        <hr class="sidebar-divider">
+
 
 
 
@@ -29,39 +38,35 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('canteen/data_user') ?>">
                 <i class="fas fa-user"></i>
-                <span>User</span></a>
+                <span>Menu</span></a>
         </li>
 
-
-
-        <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/dataTampil') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/keranjang1') ?>">
                 <i class="fas fa-table"></i>
-                <span>Data menu</span></a>
+                <span>Keranjang</span></a>
         </li>
 
 
 
-        <!-- Divider -->
+
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/dataOrder') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/order') ?>">
                 <i class="fas fa-table"></i>
-                <span>Data order</span></a>
+                <span>Order</span></a>
         </li>
 
-        <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/dataTampil') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/transaksi') ?>">
                 <i class="fas fa-table"></i>
                 <span>Data transaksi</span></a>
         </li>
@@ -127,13 +132,14 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
 
-
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo site_url('canteen') ?>" data-toggle="modal"
                                 data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
+
+
                         </div>
                     </li>
 
@@ -141,92 +147,119 @@
 
 
             </nav>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
 
+                    <h3 class="m-0 font-weight-bold text-primary">Data Order User</h3>
 
-            <div class="container-fluid">
-                <h1 class="h2 mb-4 text-gray-800 ">Input Data Penjualan</h1>
+                </div>
 
-                <?php echo form_open_multipart('canteen/simpan_datalaporan'); ?>
-                <div class="container">
-                    <!-- header -->
-                    <header class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <form action="">
+                <!-- // pdf -->
+                <div class="card-header py-1">
+                    <a class="btn btn-warning" href="<?php echo base_url('canteen/pdf') ?>">
+                        <i class="fa fa-file"></i>Export Pdf </a>
 
+                    <!-- excel -->
 
-                                    <div class="input-group mb-4">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Nama Makanan</span>
-                                        </div>
-
-                                        <input type="text" name="nama" class="form-control" placeholder=" makanan"
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-
-
-
-                                    <div class="input-group mb-4">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">harga</span>
-                                        </div>
-
-                                        <input type="text" name="harga" class="form-control" placeholder="harga makanan"
-                                            aria-label="harga" aria-describedby="basic-addon1">
-                                    </div>
-
-                                    <div class="input-group mb-4">
-                                        <span class="input-group-text" id="basic-addon1">foto</span>
-
-                                        <input type="file" name="Foto" class="form-control" placeholder=""
-                                            aria-label="foto">
-                                    </div>
-
-
-                                    <div class="input-group mb-4">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">status makanan</span>
-                                        </div>
-
-                                        <input type="text" name="status" class="form-control"
-                                            placeholder="status makanan" aria-label="status"
-                                            aria-describedby="basic-addon1">
-                                    </div>
-
-
-                            </div>
-
-                            <div class="input-group mb-4 ">
-                                <button type="submit" class="btn btn-success">Kirim Data</button>
-
-                            </div>
-
-
-
-
-                        </div>
-                        <?php echo form_close() ?>
-
-
-                        <!-- </form> -->
+                    <a class="btn btn-success" href="<?php echo base_url('canteen/excel') ?>">
+                        <i class="fa fa-file"></i>Export excel </a>
                 </div>
 
 
 
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <!-- <th scope="col">NO</th> -->
+                                    <th scope="col">id order</th>
+                                    <th scope="col">No Meja</th>
+                                    <th scope="col">Tanggal Order</th>
+                                    <th scope="col">Keterangan</th>
+                                    <th scope="col">Status Order</th>
+                                    <th colspan="2">Action</th>
+                                    <!-- <th scope="col">Status</th> -->
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                <?php
+								if ($data_user > 0) {
+									foreach ($user as $dapor) {
+								?>
+                                <tr>
+                                    <td> <?php echo $dapor->id_order; ?></td>
+                                    <td> <?php echo $dapor->no_meja; ?></td>
+                                    <td> <?php echo $dapor->tanggal_order; ?></td>
+                                    <td> <?php echo $dapor->keterangan; ?></td>
+                                    <td> <?php echo $dapor->status_order; ?></td>
+
+                                    <td></td>
+
+
+
+
+                    </div>
+                    </td>
+
+
+
+
+                    </tr>
+                    <?php }
+								} else {
+				?>
+                    <tr>
+                        <td colspan="8">
+                            <center> NO Data Entry</center>
+                        </td>
+                    </tr>
+                    <?php
+								}
+
+			?>
+
+
+
+
+
+
+
+
+
+
+                    </tbody>
+
+
+                    </table>
+                </div>
             </div>
 
 
 
+
+            </form>
+
+
         </div>
 
-        <!-- End of Footer -->
-
     </div>
-    <!-- End of Content Wrapper -->
+
+
+
+
+
+    <!-- End of Footer -->
 
 </div>
+<!-- End of Content Wrapper -->
 
+</div>
 <!-- End of Page Wrapper -->
+
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
@@ -236,7 +269,7 @@
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    < class="modal-dialog" role="document">
 
         <div class="modal-content">
             <div class="modal-header">
@@ -247,20 +280,77 @@
 
 
 
-
-
                     <span aria-hidden="true">×</span>
                 </button>
-
-
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your
                 current session.
+
+
             </div>
+
+
             <div class="modal-footer">
+
+
+
+
+
+
+
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
             </div>
+
+
+
+
+
+
+
+
+
         </div>
-    </div>
+    </ div>
+</div>
+
+
+
+
+
+
+div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
 </div>

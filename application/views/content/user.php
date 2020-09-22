@@ -41,7 +41,16 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('canteen/data_user') ?>">
                 <i class="fas fa-user"></i>
-                <span>User</span></a>
+                <span>Menu</span></a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/keranjang1') ?>">
+                <i class="fas fa-table"></i>
+                <span>Keranjang</span></a>
         </li>
 
 
@@ -51,9 +60,18 @@
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/keranjang') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/order') ?>">
                 <i class="fas fa-table"></i>
-                <span>Transaksi</span></a>
+                <span>Order</span></a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/transaksi') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data transaksi</span></a>
         </li>
 
 
@@ -134,6 +152,8 @@
             </nav>
 
 
+
+
             <!-- // pdf -->
             <div class="card-header py-1">
 
@@ -147,6 +167,7 @@
             </div>
 
             <div class="card-body">
+
 
                 <div class="table-responsive">
                     <table class="table table-bordered" id="" width="100%" cellspacing="0">
@@ -178,11 +199,14 @@
                                         width="100" height="100">
                                 </td>
                                 <td>
+
                                     <!-- //Button trigger modal -->
                                     <button type="submit" class="btn btn-success" data-toggle="modal"
                                         data-target="#exampleModal">
                                         beli
                                     </button>
+
+                                </td>
 
 
                 </div>
@@ -210,12 +234,12 @@
 
 
                 </table>
+                </form>
             </div>
         </div>
-        </form>
+
         <!--  -->
     </div>
-
 
 
     <!-- Modal -->
@@ -231,34 +255,30 @@
                 <div class="modal-body">
 
 
-                    <form action="<?php echo site_url('canteen/simpan_data'); ?>" method="post">
+                    <form action="<?php echo site_url('canteen/simpan_datakeranjang'); ?>" method="post">
 
                         <div class="form-group">
-                            <label>No Meja</label>
-                            <input type="hidden" name="id_order" class="form-control">
-                            <input type="text" name="no_meja" class="form-control">
+                            <label>Nama makanan</label>
+                            <input type="text" name="nama" class="form-control">
+
                         </div>
 
 
                         <div class="form-group">
-                            <label>Tanggal Order</label>
-                            <input type="date" name="tanggal" class="form-control">
+                            <label>Harga Makanan</label>
+                            <input type="text" name="harga" class="form-control">
                         </div>
 
-
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Keterangan</span>
-                            </div>
-
-                            <input type="text" name="keterangan" class="form-control" placeholder=" keterangan"
-                                aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
 
 
                         <div class="form-group">
-                            <label>Status Order</label>
-                            <input type="text" name="status_order" class="form-control">
+                            <label>Status makanan</label>
+                            <input type="text" name="status" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>jumlah beli</label>
+                            <input type="text" name="jumlah" class="form-control">
                         </div>
 
 
@@ -275,6 +295,9 @@
             </div>
         </div>
     </div>
+
+
+
 
 
 
@@ -383,6 +406,10 @@
     </ form>
 </div>
 form>
+
+
+
+
 
 
 

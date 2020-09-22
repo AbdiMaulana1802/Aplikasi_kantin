@@ -128,15 +128,50 @@ class canteen extends CI_Controller
 		$this->load->view('templete_data/footer');
 	}
 
-	public function keranjang()
+	//data tampil order
+	public function order()
 	{
 
 		$data['user'] = $this->model_sistem->get_user();
 		$data['data_user'] = $this->model_sistem->count_user();
-		$this->load->view('content/data_keranjang', $data);
+		$this->load->view('content/data_order', $data);
 		$this->load->view('templete_data/header');
 		$this->load->view('templete_data/footer');
 	}
+
+	//data tampil keranjang
+	public function keranjang1()
+	{
+
+		$data['user1'] = $this->model_sistem->get_user1();
+		$data['data_user1'] = $this->model_sistem->count_user1();
+		$this->load->view('content/keranjang', $data);
+		$this->load->view('templete_data/header');
+		$this->load->view('templete_data/footer');
+	}
+
+	//data tampil data order di admin
+
+	public function dataOrder()
+	{
+		$data['user'] = $this->model_sistem->get_user();
+		$data['data_user'] = $this->model_sistem->count_user();
+		$this->load->view('content/data_orderAdmin', $data);
+		$this->load->view('templete_data/header');
+		$this->load->view('templete_data/footer');
+	}
+
+	//data tampil transaksi
+	public function transaksi()
+	{
+		$data['user'] = $this->model_sistem->get_user();
+		$data['data_user'] = $this->model_sistem->count_user();
+		$this->load->view('content/transaksi', $data);
+		$this->load->view('templete_data/header');
+		$this->load->view('templete_data/footer');
+	}
+
+
 
 
 
@@ -152,13 +187,35 @@ class canteen extends CI_Controller
 	{
 		$this->model_sistem->tambah();
 	}
+	public function simpan_datakeranjang()
+	{
+		$this->model_sistem->tambah_keranjang();
+	}
 
-	//untuk menghapus data
+
+
+	//untuk menghapus data makanan
 	public function hapus($id)
 	{
 		$where = array('id_makanan' => $id);
 		$this->model_sistem->hapus_data($where, 'makanan');
 		redirect('canteen/dataTampil');
+	}
+
+	//untuk menghapus data keranjang
+	public function hapuskeranjang($id)
+	{
+		$where = array('id_makanan' => $id);
+		$this->model_sistem->hapus_datakeranjang($where, 'keranjang');
+		redirect('canteen/keranjang1');
+	}
+
+	//untuk menghapus data order diadmin
+	public function hapusOrder($id)
+	{
+		$where = array('id_order' => $id);
+		$this->model_sistem->hapus_dataOrder($where, 'order_user');
+		redirect('canteen/dataOrder');
 	}
 
 	// untuk mengedit data admin

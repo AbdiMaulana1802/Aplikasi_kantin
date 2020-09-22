@@ -32,15 +32,48 @@ class Model_sistem extends CI_Model
 	//user
 	public function get_user()
 	{
-		$data = $this->db->get('makanan');
+		$data = $this->db->get('order_user');
 		return $data->result();
 	}
 	//untuk mengcount data dari database
 	public function count_user()
 	{
-		$data = $this->db->get('makanan');
+		$data = $this->db->get('order_user');
 		return $data->num_rows();
 	}
+
+	public function get_user1()
+	{
+		$data = $this->db->get('keranjang');
+		return $data->result();
+	}
+	//untuk mengcount data dari database
+	public function count_user1()
+	{
+
+		$data = $this->db->get('keranjang');
+		return $data->num_rows();
+	}
+
+
+	public function get_barang()
+	{
+		$sql = "SELECT `id_makanan`, `nama_makanan`, `harga_makanan`, `status_makanan`, `jumlah_beli`(harga_makanan * jumlah_beli) AS total_harga FROM `keranjang` ORDER BY id_makanan;";
+		return $this->db->query($sql);
+	}
+
+	public function hitungJumlahAsset()
+	{
+		$query = $this->db->get('keranjang');
+		if ($query->num_rows() > 0) {
+			return $query->num_rows();
+		} else {
+			return 0;
+		}
+	}
+
+
+
 
 	//untuk insert/tambah  data
 
@@ -93,21 +126,43 @@ class Model_sistem extends CI_Model
 
 		$data = array(
 
-			'id'     => '',
+			'id_order'     => '',
 			'no_meja'        => $no_meja,
-			'tanggal'  => $tanggal_order,
+			'tanggal_order'  => $tanggal_order,
+			'id_user'        => '',
 			'keterangan'     => $keterangan,
-			'status'    => $status_order,
+			'status_order'    => $status_order,
 
 
 
 
 		);
 
-		$this->db->insert('order_keranjang', $data);
-		header("location:" . base_url() . 'canteen/keranjang');
+		$this->db->insert('order_user', $data);
+		header("location:" . base_url() . 'canteen/order');
 	}
 
+	public function tambah_keranjang()
+	{
+		$nama_makanan = $this->input->post('nama');
+		$harga_makanan = $this->input->post('harga');
+		$status_makanan = $this->input->post('status');
+		$jumlah_beli = $this->input->post('jumlah');
+
+		$data = array(
+			'id_makanan'     => '',
+			'nama_makanan'   => $nama_makanan,
+			'harga_makanan'  => $harga_makanan,
+			'status_makanan' => $status_makanan,
+			'jumlah_beli'    => $jumlah_beli,
+
+
+
+
+		);
+		$this->db->insert('keranjang', $data);
+		header("location:" . base_url() . 'canteen/keranjang1');
+	}
 
 
 
@@ -118,6 +173,24 @@ class Model_sistem extends CI_Model
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+
+	// untuk menghapus data keranjang
+	public function hapus_datakeranjang($where, $table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	// untuk menghapus data order di admin
+	public function hapus_dataOrder($where, $table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+
+
+
 
 	// untuk mengedit data admin ke database
 	public function edit_dataAdmin($where, $table)

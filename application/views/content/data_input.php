@@ -25,6 +25,24 @@
                 <span>admin</span></a>
         </li>
 
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/dataTampil') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data menu</span></a>
+        </li>
+
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/dataOrder') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data order</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -33,8 +51,10 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('canteen/dataTampil') ?>">
                 <i class="fas fa-table"></i>
-                <span>Data</span></a>
+                <span>Data transaksi</span></a>
         </li>
+
+
 
 
 
@@ -173,6 +193,8 @@
 													'<button type="button" class="btn btn-danger">Delete</button>'
 												); ?>
                                     </td>
+
+
                                     <td><?php echo anchor(
 													'canteen/edit_admin/' .  $dapor->id_makanan,
 													'<button type="button" class="btn btn-primary">Update</button>'
@@ -221,7 +243,6 @@
 
 
 
-
         <!-- End of Footer -->
 
     </div>
@@ -266,12 +287,26 @@
 
 
 
-      
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+
+
+
+
+
+
+
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
-            </div>
+
+
+
+
+      
+      </div>
         </div>
     </ div>
 </div>
 div>
+</div>
+</div>
 </div>

@@ -42,18 +42,36 @@ class Model_sistem extends CI_Model
 		return $data->num_rows();
 	}
 
+	//untuk get data keranjang
 	public function get_user1()
 	{
 		$data = $this->db->get('keranjang');
 		return $data->result();
 	}
-	//untuk mengcount data dari database
+	//untuk mengcount data keranjang dari database
 	public function count_user1()
 	{
 
 		$data = $this->db->get('keranjang');
 		return $data->num_rows();
 	}
+
+
+	//untuk get data transaksi
+	public function get_transaksi()
+	{
+		$data = $this->db->get('transaksi_user');
+		return $data->result();
+	}
+	//untuk mengcount data transaksi dari database
+	public function count_transaksi()
+	{
+
+		$data = $this->db->get('transaksi_user');
+		return $data->num_rows();
+	}
+
+
 
 
 	public function get_barang()
@@ -164,6 +182,31 @@ class Model_sistem extends CI_Model
 		header("location:" . base_url() . 'canteen/keranjang1');
 	}
 
+	// insert data transaksi
+	public function simpan_transaksi()
+	{
+		$id_user         = $this->input->post('id_user');
+		$id_order        = $this->input->post('id_order');
+		$tanggal         = $this->input->post('tanggal');
+		$total_harga     = $this->input->post('total_harga');
+
+		$data = array(
+
+			'id_transaksi'  	 => '',
+			'id_user'       	 => $id_user,
+			'id_order'           => $id_order,
+			'tanggal_transaksi'  => $tanggal,
+			'total_harga'   	 => $total_harga,
+		);
+
+		$this->db->insert('transaksi_user', $data);
+		header("location:" . base_url() . 'canteen/transaksi');
+	}
+
+
+
+
+
 
 
 
@@ -183,6 +226,13 @@ class Model_sistem extends CI_Model
 
 	// untuk menghapus data order di admin
 	public function hapus_dataOrder($where, $table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	// untuk menghapus data order di admin
+	public function hapus_datatransaksi($where, $table)
 	{
 		$this->db->where($where);
 		$this->db->delete($table);

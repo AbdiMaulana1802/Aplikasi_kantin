@@ -49,7 +49,7 @@
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/dataTampil') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/transaksiAdmin') ?>">
                 <i class="fas fa-table"></i>
                 <span>Data transaksi</span></a>
         </li>
@@ -297,6 +297,7 @@
 
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
+
 
 
 

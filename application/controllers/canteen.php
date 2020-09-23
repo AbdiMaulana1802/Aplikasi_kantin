@@ -161,15 +161,27 @@ class canteen extends CI_Controller
 		$this->load->view('templete_data/footer');
 	}
 
-	//data tampil transaksi
+	//data tampil transaksi user
 	public function transaksi()
 	{
-		$data['user'] = $this->model_sistem->get_user();
-		$data['data_user'] = $this->model_sistem->count_user();
+		$data['transaksi'] = $this->model_sistem->get_transaksi();
+		$data['data_transaksi'] = $this->model_sistem->count_transaksi();
 		$this->load->view('content/transaksi', $data);
 		$this->load->view('templete_data/header');
 		$this->load->view('templete_data/footer');
 	}
+
+	//data tampil  transaksi admin
+	public function transaksiAdmin()
+	{
+		$data['transaksi'] = $this->model_sistem->get_transaksi();
+		$data['data_transaksi'] = $this->model_sistem->count_transaksi();
+		$this->load->view('content/data_transaksiAdmin', $data);
+		$this->load->view('templete_data/header');
+		$this->load->view('templete_data/footer');
+	}
+
+
 
 
 
@@ -190,6 +202,10 @@ class canteen extends CI_Controller
 	public function simpan_datakeranjang()
 	{
 		$this->model_sistem->tambah_keranjang();
+	}
+	public function simpan_dataorder()
+	{
+		$this->model_sistem->simpan_transaksi();
 	}
 
 
@@ -217,6 +233,15 @@ class canteen extends CI_Controller
 		$this->model_sistem->hapus_dataOrder($where, 'order_user');
 		redirect('canteen/dataOrder');
 	}
+
+	//untuk menghapus data transaksi diadmin
+	public function hapustransaksi($id)
+	{
+		$where = array('id_transaksi' => $id);
+		$this->model_sistem->hapus_dataOrder($where, 'transaksi_user');
+		redirect('canteen/transaksiAdmin');
+	}
+
 
 	// untuk mengedit data admin
 

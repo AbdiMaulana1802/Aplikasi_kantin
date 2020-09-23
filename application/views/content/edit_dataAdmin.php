@@ -41,9 +41,30 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('canteen/dataTampil') ?>">
                 <i class="fas fa-table"></i>
-                <span>Data</span></a>
+                <span>Data menu</span></a>
         </li>
 
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/dataOrder') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data order</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/transaksiAdmin') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data transaksi</span></a>
+        </li>
 
 
 
@@ -124,75 +145,81 @@
             <div class="container-fluid">
                 <h1 class="h2 mb-4 text-gray-800 ">Edit Data Penjualan Admin</h1>
 
-                <?php foreach ($admin as $dapor) {
-				?>
+                <div class="content-wrapper">
+                    <section class="content">
 
-                <?php echo form_open_multipart('canteen/update_dataAdmin'); ?>
-                <div class="container">
-                    <!-- header -->
-                    <header class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <form action="">
+                        <?php foreach ($admin as $dapor) {
+						?>
 
-
-                                    <div class="form-group">
-                                        <label>Nama Makanan</label>
-                                        <input type="hidden" name="id" class="form-control"
-                                            value="<?php echo $dapor->id_makanan; ?>">
-                                        <input type="text" name="nama" class="form-control">
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label>Harga Makanan</label>
-                                        <input type="text" name="harga" class="form-control">
-                                    </div>
-
-                                    <div class="form-group mb-4">
-                                        <label class="text-left">Gambar</label>
-                                        <input type="file" name="FOTO" class="form-control" placeholder=""
-                                            aria-label="foto" value="<?php echo $dapor->foto ?>">
-                                    </div>
-
-
-                                    <div class="input-group mb-4">
-                                        <label>Status Makanan</label>
-                                        <input type="text" name="status" class="form-control">
-                                    </div>
+                        <?php echo form_open_multipart('canteen/update_dataAdmin'); ?>
+                        <div class="container">
+                            <!-- header -->
+                            <header class="sticky-footer bg-white">
+                                <!-- <div class="container my-auto">
+                                    <div class="copyright text-center my-auto"> -->
 
 
 
-                            </div>
+                                <div class="form-group">
+                                    <label>Nama Makanan</label>
+                                    <input type="hidden" name="id" class="form-control"
+                                        value="<?php echo $dapor->id_makanan; ?>">
+                                    <input type="text" name="nama" class="form-control">
+                                </div>
 
-                            <div class="input-group mb-4 ">
-                                <button type="submit" class="btn btn-success">Edit Data</button>
 
-                            </div>
+                                <div class="form-group">
+                                    <label>Harga Makanan</label>
+                                    <input type="text" name="harga" class="form-control">
+                                </div>
 
+                                <div class="form-group mb-4">
+                                    <label class="text-left">Gambar</label>
+                                    <input type="file" name="FOTO" class="form-control" placeholder="" aria-label="foto"
+                                        value="<?php echo $dapor->foto ?>">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Status Makanan</label>
+                                    <input type="text" name="status" class="form-control">
+                                </div>
 
 
 
                         </div>
-                        <?php echo form_close() ?>
-                        <?php } ?>
+
+                        <div class="input-group mb-4 ">
+                            <button type="submit" class="btn btn-success">Edit Data</button>
+
+                        </div>
 
 
-                        <!-- </form> -->
+
+
                 </div>
-
-
+                <?php echo form_close() ?>
+                <?php } ?>
+                </section>
 
             </div>
 
 
-
+            <!-- </form> -->
         </div>
 
-        <!-- End of Footer -->
+
 
     </div>
-    <!-- End of Content Wrapper -->
+
+
+
+</div>
+
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
 
 </div>
 
@@ -244,6 +271,10 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your
                 current session.
             </div>
+
+
+
+
 
 
 

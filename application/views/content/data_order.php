@@ -189,6 +189,7 @@
                                 <?php
 								if ($data_user > 0) {
 									foreach ($user as $dapor) {
+
 								?>
                                 <tr>
                                     <td> <?php echo $dapor->id_order; ?></td>
@@ -197,7 +198,17 @@
                                     <td> <?php echo $dapor->keterangan; ?></td>
                                     <td> <?php echo $dapor->status_order; ?></td>
 
-                                    <td></td>
+                                    <td>
+
+                                        <!-- //Button trigger modal -->
+                                        <button type="submit" class="btn btn-success" data-toggle="modal"
+                                            data-target="#exampleModal">
+                                            bayar
+                                        </button>
+
+                                    </td>
+
+
 
 
 
@@ -247,6 +258,67 @@
         </div>
 
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">data transaksi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form action="<?php echo site_url('canteen/simpan_dataorder'); ?>" method="post">
+
+                        <div class="form-group">
+                            <label for="">ID Order</label>
+                            <input type="text" name="id_order" class="form-control"
+                                value="<?php echo $dapor->id_order ?>" readonly>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">ID User</label>
+                            <input type="text" name="id_user" class="form-control" value="<?php echo $dapor->id_user ?>"
+                                readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="">Tanggal</label>
+                            <input type="date" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>"
+                                readonly>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="">Total Harga</label>
+                            <input type="text" name="total_harga" class="form-control">
+
+                        </div>
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">bayar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -323,6 +395,26 @@ div>
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

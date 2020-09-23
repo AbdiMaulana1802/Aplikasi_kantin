@@ -188,52 +188,93 @@
                             </thead>
                             <tbody>
 
-
-                                <td colspan="8">
-                                    <center> NO Data Entry</center>
-                                </td>
-                                </tr>
                                 <?php
-
+								$no = 1;
+								if ($data_transaksi > 0) {
+									foreach ($transaksi as $dapor) {
 
 								?>
+                                <tr>
+
+                                    <td> <?php echo $no++  ?></td>
+                                    <td> <?php echo $dapor->id_transaksi; ?></td>
+                                    <td> <?php echo $dapor->id_user; ?></td>
+                                    <td> <?php echo $dapor->id_order; ?></td>
+                                    <td> <?php echo $dapor->tanggal_transaksi; ?></td>
+                                    <td> <?php echo $dapor->total_harga; ?></td>
+
+                                    <td>
+
+                                        <!-- //Button trigger modal -->
+                                        <!-- <button type="submit" class="btn btn-success" data-toggle="modal"
+                                            data-target="#exampleModal">
+                                            bayar
+                                        </button> -->
+
+                                    </td>
 
 
 
 
-
-
-
-
-
-
-
-
-                            </tbody>
-
-
-                        </table>
                     </div>
+                    </td>
+
+
+
+
+                    </tr>
+                    <?php }
+								} else {
+				?>
+                    <tr>
+                        <td colspan="8">
+                            <center> NO Data Entry</center>
+                        </td>
+                    </tr>
+                    <?php
+								}
+
+			?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </tbody>
+
+
+                    </table>
                 </div>
-
-
-
-
-                </form>
-
-
             </div>
+
+
+
+
+            </form>
+
 
         </div>
 
-
-
-
-
-        <!-- End of Footer -->
-
     </div>
-    <!-- End of Content Wrapper -->
+
+
+
+
+
+    <!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
@@ -269,6 +310,9 @@
 
 
             <div class="modal-footer">
+
+
+
 
 
 

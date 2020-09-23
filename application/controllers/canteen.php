@@ -181,6 +181,14 @@ class canteen extends CI_Controller
 		$this->load->view('templete_data/footer');
 	}
 
+	public function pembayaran_transaksi()
+	{
+		$data['bayar'] = $this->model_sistem->get_pembayaran();
+		$data['data_bayar'] = $this->model_sistem->count_pembayaran();
+		$this->load->view('content/pembayaran', $data);
+		$this->load->view('templete_data/header');
+		$this->load->view('templete_data/footer');
+	}
 
 
 
@@ -199,14 +207,24 @@ class canteen extends CI_Controller
 	{
 		$this->model_sistem->tambah();
 	}
+
+	// data keranjang
 	public function simpan_datakeranjang()
 	{
 		$this->model_sistem->tambah_keranjang();
 	}
+	// data order
 	public function simpan_dataorder()
 	{
 		$this->model_sistem->simpan_transaksi();
 	}
+
+	// pembayaran transaksi
+	public function pembayaran()
+	{
+		$this->model_sistem->bayar_transaksi();
+	}
+
 
 
 

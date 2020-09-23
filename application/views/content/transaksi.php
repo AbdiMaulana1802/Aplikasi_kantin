@@ -72,6 +72,15 @@
                 <span>Data transaksi</span></a>
         </li>
 
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/pembayaran_transaksi') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data pembayaran</span></a>
+        </li>
+
 
 
 
@@ -179,7 +188,7 @@
                                     <th scope="col">id user</th>
                                     <th scope="col">id order</th>
                                     <th scope="col">tanggal transaksi</th>
-                                    <th scope="col">total bayar</th>
+                                    <th scope="col">total harga</th>
                                     <th colspan="2">Action</th>
                                     <!-- <th scope="col">Status</th> -->
                                 </tr>
@@ -206,10 +215,10 @@
                                     <td>
 
                                         <!-- //Button trigger modal -->
-                                        <!-- <button type="submit" class="btn btn-success" data-toggle="modal"
+                                        <button type="submit" class="btn btn-success" data-toggle="modal"
                                             data-target="#exampleModal">
                                             bayar
-                                        </button> -->
+                                        </button>
 
                                     </td>
 
@@ -236,20 +245,6 @@
 
 			?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </tbody>
 
 
@@ -268,10 +263,57 @@
     </div>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pembayaran User Makanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+                <div class="modal-body">
+                    <form action="<?php echo site_url('canteen/pembayaran'); ?>" method="post">
+
+                        <div class="form-group">
+                            <label>Total Harga</label>
+                            <input type="text" name="total_harga" class="form-control"
+                                value="<?php echo $dapor->total_harga ?>" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Masukan uang anda </label>
+                            <input type="text" name="uang" class="form-control">
+                        </div>
 
 
 
-    <!-- End of Footer -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">bayar</button>
+                </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- End of Footer -->
 
 </div>
 <!-- End of Content Wrapper -->
@@ -299,30 +341,17 @@
 
 
 
-                    <span aria-hidden="true">×</span>
+
+
+
+
+
+         
+           <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your
                 current session.
 
 
-            </div>
-
-
-            <div class="modal-footer">
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
             </div>

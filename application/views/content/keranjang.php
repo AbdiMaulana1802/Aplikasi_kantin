@@ -71,6 +71,15 @@
                 <span>Data transaksi</span></a>
         </li>
 
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/pembayaran_transaksi') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data pembayaran</span></a>
+        </li>
+
 
 
 
@@ -389,6 +398,8 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
             </div>
+
+
 
 
 

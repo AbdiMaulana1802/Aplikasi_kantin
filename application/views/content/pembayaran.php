@@ -53,11 +53,12 @@
 
 
 
+        <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Validasi -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('canteen/order') ?>">
+            <a class="nav-link" href="<?php echo site_url('canteen/dataOrder') ?>">
                 <i class="fas fa-table"></i>
                 <span>Order</span></a>
         </li>
@@ -159,7 +160,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
 
-                    <h3 class="m-0 font-weight-bold text-primary">Data Order User</h3>
+                    <h3 class="m-0 font-weight-bold text-primary">Data pembayaran</h3>
 
                 </div>
 
@@ -176,46 +177,41 @@
 
 
 
+
                 <div class="card-body">
 
                     <div class="table-responsive">
                         <table class="table table-bordered" id="" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <!-- <th scope="col">NO</th> -->
-                                    <th scope="col">id order</th>
-                                    <th scope="col">No Meja</th>
-                                    <th scope="col">Tanggal Order</th>
-                                    <th scope="col">Keterangan</th>
-                                    <th scope="col">Status Order</th>
-                                    <th colspan="2">Action</th>
+                                    <th scope="col">NO</th>
+                                    <th scope="col">Total harga</th>
+                                    <th scope="col">Masukan uang anda</th>
+                                    <th scope="col">Kembalian</th>
+
                                     <!-- <th scope="col">Status</th> -->
                                 </tr>
-
-
                             </thead>
+
                             <tbody>
                                 <?php
-								if ($data_user > 0) {
-									foreach ($user as $dapor) {
+								$no = 1;
+								if ($data_bayar > 0) {
+									foreach ($bayar as $dapor) {
+										$total_harga[] = $dapor->total_harga;
+										$total = array_sum($total_harga);
+
+										$uang_anda[]   = $dapor->uang_anda;
+										$total1 = array_sum($uang_anda);
+
 
 								?>
                                 <tr>
-                                    <td> <?php echo $dapor->id_order; ?></td>
-                                    <td> <?php echo $dapor->no_meja; ?></td>
-                                    <td> <?php echo $dapor->tanggal_order; ?></td>
-                                    <td> <?php echo $dapor->keterangan; ?></td>
-                                    <td> <?php echo $dapor->status_order; ?></td>
 
-                                    <td>
-
-                                        <!-- //Button trigger modal -->
-                                        <button type="submit" class="btn btn-success" data-toggle="modal"
-                                            data-target="#exampleModal">
-                                            bayar
-                                        </button>
-
-                                    </td>
+                                    <td> <?php echo $no++  ?></td>
+                                    <td> <?php echo $dapor->total_harga; ?></td>
+                                    <td> <?php echo $dapor->uang_anda; ?></td>
+                                    <td> <?php echo $dapor->uang_anda - $dapor->total_harga; ?></td>
 
 
 
@@ -243,20 +239,11 @@
 			?>
 
 
-
-
-
-
-
-
-
-
                     </tbody>
-
-
                     </table>
                 </div>
             </div>
+
 
 
 
@@ -274,47 +261,26 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">data transaksi</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Pembayaran User Makanan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
+
                 <div class="modal-body">
-
-
-                    <form action="<?php echo site_url('canteen/simpan_dataorder'); ?>" method="post">
+                    <form action="<?php echo site_url('canteen/pembayaran'); ?>" method="post">
 
                         <div class="form-group">
-                            <label for="">ID Order</label>
-                            <input type="text" name="id_order" class="form-control"
-                                value="<?php echo $dapor->id_order ?>" readonly>
-
+                            <label>Total Harga</label>
+                            <input type="text" name="total_harga" class="form-control"
+                                value="<?php echo $dapor->total_harga ?>" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="">ID User</label>
-                            <input type="text" name="id_user" class="form-control" value="<?php echo $dapor->id_user ?>"
-                                readonly>
-
+                            <label>Masukan uang anda </label>
+                            <input type="text" name="uang" class="form-control">
                         </div>
-
-
-                        <div class="form-group">
-                            <label for="">Tanggal</label>
-                            <input type="date" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>"
-                                readonly>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="">Total Harga</label>
-                            <input type="text" name="total_harga" class="form-control">
-
-                        </div>
-
-
-
 
 
 
@@ -324,16 +290,23 @@
                     <button type="submit" class="btn btn-primary">bayar</button>
                 </div>
                 </form>
+
             </div>
+
         </div>
     </div>
 
 
+</div>
+</div>
 
 
 
 
-    <!-- End of Footer -->
+
+
+
+<!-- End of Footer -->
 
 </div>
 <!-- End of Content Wrapper -->
@@ -350,28 +323,20 @@
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    < class="modal-dialog" role="document">
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 
 
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+
+
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
 
 
 
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your
-                current session.
 
 
-            </div>
-
-
-            <div class="modal-footer">
+                <span aria-hidden="true">×</span>
 
 
 
@@ -379,80 +344,16 @@
 
 
 
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?php echo site_url('canteen') ?>">Logout</a>
-            </div>
 
 
 
 
 
-
-
+        
+    </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your
+            current session.
 
 
         </div>
-    </ div>
-</div>
-
-
-
-
-
-
-div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-</div>
-</div>

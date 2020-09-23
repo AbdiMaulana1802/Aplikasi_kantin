@@ -74,6 +74,15 @@
                 <span>Data transaksi</span></a>
         </li>
 
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Validasi -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('canteen/pembayaran_transaksi') ?>">
+                <i class="fas fa-table"></i>
+                <span>Data pembayaran</span></a>
+        </li>
+
 
 
 
@@ -406,6 +415,8 @@
     </ form>
 </div>
 form>
+
+
 
 
 

@@ -71,24 +71,37 @@ class Model_sistem extends CI_Model
 		return $data->num_rows();
 	}
 
-
-
-
-	public function get_barang()
+	// pembayaran transaksi
+	public function get_pembayaran()
 	{
-		$sql = "SELECT `id_makanan`, `nama_makanan`, `harga_makanan`, `status_makanan`, `jumlah_beli`(harga_makanan * jumlah_beli) AS total_harga FROM `keranjang` ORDER BY id_makanan;";
-		return $this->db->query($sql);
+		$data = $this->db->get('pembayaran');
+		return $data->result();
 	}
 
-	public function hitungJumlahAsset()
+	public function count_pembayaran()
 	{
-		$query = $this->db->get('keranjang');
-		if ($query->num_rows() > 0) {
-			return $query->num_rows();
-		} else {
-			return 0;
-		}
+		$data = $this->db->get('pembayaran');
+		return $data->num_rows();
 	}
+
+
+
+
+	// public function get_barang()
+	// {
+	// 	$sql = "SELECT `id_makanan`, `nama_makanan`, `harga_makanan`, `status_makanan`, `jumlah_beli`(harga_makanan * jumlah_beli) AS total_harga FROM `keranjang` ORDER BY id_makanan;";
+	// 	return $this->db->query($sql);
+	// }
+
+	// public function hitungJumlahAsset()
+	// {
+	// 	$query = $this->db->get('keranjang');
+	// 	if ($query->num_rows() > 0) {
+	// 		return $query->num_rows();
+	// 	} else {
+	// 		return 0;
+	// 	}
+	// }
 
 
 
@@ -201,6 +214,22 @@ class Model_sistem extends CI_Model
 
 		$this->db->insert('transaksi_user', $data);
 		header("location:" . base_url() . 'canteen/transaksi');
+	}
+
+	public function bayar_transaksi()
+	{
+		$total_harga = $this->input->post('total_harga');
+		$uang        = $this->input->post('uang');
+
+		$data = array(
+
+
+			'total_harga'   	 => $total_harga,
+			'uang_anda'          => $uang,
+		);
+
+		$this->db->insert('pembayaran', $data);
+		header("location:" . base_url() . 'canteen/pembayaran_transaksi');
 	}
 
 
